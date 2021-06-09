@@ -71,7 +71,7 @@ AND YEAR(`date_of_birth`)=1975;
 
 SELECT COUNT(`ospite_id`) 
 FROM `paganti`
-WHERE `ospite_id` <> "NULL"; 
+WHERE `ospite_id` IS NOT NULL; 
 
 -- 14
 
