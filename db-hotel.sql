@@ -6,12 +6,14 @@ FROM `ospiti`
 WHERE `document_type`="CI";
 
 
+
 /* ES 2 */
 /* Seleziona tutti gli ospiti che sono nati dopo il 1988 */
 
 SELECT * 
 FROM `ospiti` 	 
 WHERE YEAR(`date_of_birth`)>1988;
+
 
 
 /* ES 3 */
@@ -22,12 +24,14 @@ FROM `ospiti`
 WHERE YEAR(`date_of_birth`) < YEAR(CURRENT_DATE()) - 20;
 
 
+
 /* ES 4 */
 /* Seleziona tutti gli ospiti il cui nome inizia con la D */
 
 SELECT *
 FROM `ospiti`
 WHERE `name` LIKE "D%";
+
 
 
 /* ES 5 */
@@ -38,6 +42,7 @@ FROM `pagamenti`
 WHERE `status` = "accepted";
 
 -- 4164.00 
+
 
 
 /* ES 6 */
@@ -54,8 +59,28 @@ WHERE `status` = "accepted";
 /* ES 7 */
 /* Seleziona gli ospiti riconosciuti con patente e nati nel 1975 */
 
-
 SELECT * 
 FROM `ospiti` 	 
 WHERE `document_type` LIKE "Driver%"
 AND YEAR(`date_of_birth`)=1975;
+
+
+
+/* ES 8 */
+/* Quanti paganti sono anche ospiti? */
+
+SELECT COUNT(`ospite_id`) 
+FROM `paganti`
+WHERE `ospite_id` <> "NULL"; 
+
+-- 14
+
+
+
+/* ES 9 */
+/* Quanti posti letto ha l’hotel in totale? */
+
+SELECT SUM(`beds`)
+FROM `stanze`;
+
+-- 33
